@@ -84,7 +84,7 @@ function TodoList() {
         <Todo
           isModalOpen={isModalOpen}
           handleModal={_handleModal}
-          _dispatch={dispatch}
+          dispatch={dispatch}
           editTodoData={editTodoData}
           isEditFlag={isEditFlag}
         />

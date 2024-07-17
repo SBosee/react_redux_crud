@@ -8,11 +8,11 @@ import { AppDispatch } from '../store';
 type TodoType = {
     isModalOpen: boolean;
     handleModal: (value: boolean) => void;
-    _dispatch: AppDispatch;
+    dispatch: AppDispatch;
     editTodoData: TodoState|null;
     isEditFlag: boolean;
 }
-function Todo({ isModalOpen, handleModal, _dispatch, isEditFlag,editTodoData }: TodoType) {
+function Todo({ isModalOpen, handleModal, dispatch, isEditFlag,editTodoData }: TodoType) {
     const [form] = Form.useForm();
     console.log(form,"fom")
     const _onFinish = (values: { name: string, description: string }) => {
@@ -24,7 +24,7 @@ function Todo({ isModalOpen, handleModal, _dispatch, isEditFlag,editTodoData }: 
                 description: values.description
             }
             handleModal(false)
-            _dispatch(updateTodo(obj))
+            dispatch(updateTodo(obj))
         } else {
             const obj = {
                 id: uuidv4(),
@@ -32,7 +32,7 @@ function Todo({ isModalOpen, handleModal, _dispatch, isEditFlag,editTodoData }: 
                 description: values.description
             }
             handleModal(false)
-            _dispatch(addTodo(obj))
+            dispatch(addTodo(obj))
         }
         form.resetFields();
 
